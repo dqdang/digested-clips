@@ -4,6 +4,7 @@ import pdb
 import re
 import os
 import argparse
+import batchloader
 
 if __name__ == '__main__':
 

@@ -3,7 +3,7 @@ import urllib.request
 import requests
 import sys
 
-basepath = 'downloads/'
+basepath = './'
 base_clip_path = 'https://clips-media-assets2.twitch.tv/'
 
 
