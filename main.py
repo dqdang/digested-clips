@@ -4,7 +4,8 @@ import pdb
 import re
 import os
 import argparse
-import batchloader
+import cliploader
+from youtube_upload import uploader
 
 if __name__ == '__main__':
 
@@ -49,14 +50,15 @@ if __name__ == '__main__':
             n = re.search("(https?:\/\/(?:[a-z0-9-]+\.)*clips.twitch\.tv(?:\S*)?)", submission.selftext, re.IGNORECASE)
             if m or n:
                 if m:
-                    index = submission.url.find(m.group(0))
+                    index = m.group(0)
                 else:
-                    index = submission.selftext.find(n.group(0))
-                # new_comment = comment.body[:index] + "old." + comment.body[index:]
-                youtube_mirror = ""
+                    index = n.group(0)
+                print(index)
+                clip = cliploader.dl_clip(index)
+                print("\n")
+                youtube_mirror = uploader.upload(["-t"+clip[0], clip[1]])
                 # Reply to the post
                 submission.reply("Here you fucking go: " + youtube_mirror)
-                # print("Bot replying to : ", comment.body)
 
                 # Store the current id into our list
                 posts_replied_to.append(submission.id)
