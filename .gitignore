@@ -2,3 +2,6 @@
 *.mp4
 *.pyc
 *.txt
+*.json
+*.ini
+
