@@ -4,7 +4,7 @@ import pdb
 import re
 import os
 import argparse
-import cliploader
+from twitch_download import cliploader
 from youtube_upload import uploader
 
 if __name__ == '__main__':
@@ -58,10 +58,11 @@ if __name__ == '__main__':
                 print("\n")
                 youtube_mirror = uploader.upload(["-t"+clip[0], clip[1]])
                 # Reply to the post
-                submission.reply("Here you fucking go: " + youtube_mirror)
+                submission.reply("Here you go: " + youtube_mirror)
 
                 # Store the current id into our list
                 posts_replied_to.append(submission.id)
+                os.remove(clip[1])
 
     # Write our updated list back to the file
     with open(write_to, "w") as f:
