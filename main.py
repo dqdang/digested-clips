@@ -58,7 +58,13 @@ if __name__ == '__main__':
                 print("\n")
                 youtube_mirror = uploader.upload(["-t"+clip[0], clip[1]])
                 # Reply to the post
-                submission.reply("Here you go: " + youtube_mirror)
+                submit = False
+                while(not submit):
+                    try:
+                        submission.reply("Here you go: " + youtube_mirror)
+                        submit = True
+                    except Exception:
+                        continue
 
                 # Store the current id into our list
                 posts_replied_to.append(submission.id)
