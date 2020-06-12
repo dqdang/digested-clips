@@ -1,5 +1,5 @@
 # digested-clips
-I really hate twitch clips.
+Twitch clips more unreliable than the printer at work
 
 Thanks to:
 
