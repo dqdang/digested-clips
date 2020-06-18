@@ -1,5 +1,5 @@
 # digested-clips
-Twitch clips more unreliable than the printer at work
+Twitch clips are more unreliable than the printer at work
 
 Thanks to:
 
