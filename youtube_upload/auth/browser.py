@@ -10,6 +10,7 @@ except ImportError:
     except ImportError:
         WEBKIT_BACKEND = None
 
+
 def get_code(url, size=(640, 480), title="Google authentication"):
     if WEBKIT_BACKEND:
         lib.debug("Using webkit backend: " + WEBKIT_BACKEND)

@@ -10,11 +10,12 @@ from youtube_upload import uploader
 if __name__ == '__main__':
 
     parser = argparse.ArgumentParser(description='I really hate twitch clips')
-    parser.add_argument('-t', '--test',help='tests the application', action='store_true')
+    parser.add_argument(
+        '-t', '--test', help='tests the application', action='store_true')
 
     args = parser.parse_args()
     write_to = "posts_replied_to.txt"
-    
+
     # Create the Reddit instance
     reddit = praw.Reddit('bot1')
 
@@ -46,8 +47,10 @@ if __name__ == '__main__':
             # Do a case insensitive search
             # here: [this is a link](https://reddit.com)
             # m = re.search("reddit.com[^\)]*", comment.body, re.IGNORECASE)
-            m = re.search("(https?:\/\/(?:[a-z0-9-]+\.)*clips.twitch\.tv(?:\S*)?)", submission.url, re.IGNORECASE)
-            n = re.search("(https?:\/\/(?:[a-z0-9-]+\.)*clips.twitch\.tv(?:\S*)?)", submission.selftext, re.IGNORECASE)
+            m = re.search(
+                "(https?:\/\/(?:[a-z0-9-]+\.)*clips.twitch\.tv(?:\S*)?)", submission.url, re.IGNORECASE)
+            n = re.search(
+                "(https?:\/\/(?:[a-z0-9-]+\.)*clips.twitch\.tv(?:\S*)?)", submission.selftext, re.IGNORECASE)
             if m or n:
                 if m:
                     index = m.group(0)

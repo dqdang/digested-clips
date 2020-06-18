@@ -1,6 +1,6 @@
 try:
-    #import urllib2 
-    from urllib2 import urlopen    
+    #import urllib2
+    from urllib2 import urlopen
     import urllib
 except ImportError:
     from urllib.request import urlopen
@@ -42,8 +42,9 @@ IDS = {
     "Trailers": 44,
 }
 
+
 def get(region_code="us", api_key=None):
-    params = dict(part="snippet", regionCode=region_code, key=api_key)  
+    params = dict(part="snippet", regionCode=region_code, key=api_key)
     full_url = URL + "?" + urllib.urlencode(params)
     response = urlopen(full_url)
     categories_info = json.loads(response.read())

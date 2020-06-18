@@ -37,7 +37,7 @@ def dl_clip(clip):
     print('\nDownloading clip slug: ' + slug)
     print('"' + clip_title + '" -> ' + out_filename)
     print(mp4_url)
-    # with open(output_path, 'wb') as f:  
+    # with open(output_path, 'wb') as f:
     #     f.write(requests.get(mp4_url).content)
     urllib.urlretrieve(mp4_url, output_path, reporthook=dl_progress)
 
