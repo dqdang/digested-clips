@@ -7,6 +7,10 @@ import argparse
 from twitch_download import cliploader
 from youtube_upload import uploader
 
+USERNAME = os.environ['USERNAME']
+PASSWORD = os.environ['PASSWORD']
+SUBREDDIT = os.environ['SUBREDDIT']
+
 if __name__ == '__main__':
 
     parser = argparse.ArgumentParser(description='I really hate twitch clips')
@@ -20,7 +24,7 @@ if __name__ == '__main__':
     reddit = praw.Reddit('bot1')
 
     # and login
-    # reddit.login(USERNAME, PASSWORD)
+    reddit.login(USERNAME, PASSWORD)
 
     # Have we run this code before? If not, create an empty list
     if not os.path.isfile(write_to):
@@ -37,7 +41,7 @@ if __name__ == '__main__':
             posts_replied_to = list(filter(None, posts_replied_to))
 
     # Get the top 5 values from our subreddit
-    subreddit = reddit.subreddit('derek_bot')
+    subreddit = reddit.subreddit(SUBREDDIT)
     for submission in subreddit.hot(limit=10):
 
         # If we haven't replied to this post before
