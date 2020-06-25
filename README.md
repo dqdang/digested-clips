@@ -16,7 +16,7 @@ Host this on a local server. Get one from Google Cloud, AWS, DigitalOcean, etc.
     1) Go to https://ssl.reddit.com/prefs/apps/
     2) Make app, personal use.
     3) pip install praw -> copy praw.ini from pip install location to this file's folder
-    4) Fill in information in `main.py` [Lines 10, 11, 12]
+    4) Fill in information in `main.py`. Replace os.environ["VALUE"] with your string. [Lines 10, 11, 12, 13, 14]
 
 ### Twitch:
     1) Make Twitch account with cid. Create application -> Enable 2-factor authentication
@@ -25,7 +25,7 @@ Host this on a local server. Get one from Google Cloud, AWS, DigitalOcean, etc.
     $ curl -X POST "https://id.twitch.tv/oauth2/token?client_id=CID&client_secret=SECRET&grant_type=client_credentials&scope=clips:edit"
     $ {"access_token":"b8zb83g1y02eryihb4zrggjycac15s","expires_in":5616898,"scope":["clips:edit"],"token_type":"bearer"}
 
-    3) Fill in information in `cliploader.py` [Lines 12, 13]
+    3) Fill in information in `cliploader.py`. Replace os.environ["VALUE"] with your string. [Lines 12, 13]
 
 ### Youtube:
     1) Make a Google account and create an application here: https://console.developers.google.com/
@@ -38,3 +38,5 @@ Host this on a local server. Get one from Google Cloud, AWS, DigitalOcean, etc.
 If all goes well, just run the main file:
 
     $ python main.py
+
+Note: On the initial upload, there will be a Google authentication page that will ask for your Youtube login information. Fill it in the first time and you will authenticate the bot for future uploads.
