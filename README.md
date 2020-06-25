@@ -14,7 +14,7 @@ Host this on a local server. Get one from Google Cloud, AWS, DigitalOcean, etc.
 ### Reddit:
 1) Go to https://ssl.reddit.com/prefs/apps/
 2) Make app, personal use.
-3) pip install praw -> copy praw.ini from pip install location to this file's folder.
+3) Copy praw.ini from pip install location to this file's folder. Use ``pip show praw`` to find the location.
 4) Fill in information in ``main.py``. Replace ``os.environ["VALUE"]`` with your string. [Lines 10, 11, 12, 13, 14]
 
 ### Twitch:
@@ -26,11 +26,11 @@ Host this on a local server. Get one from Google Cloud, AWS, DigitalOcean, etc.
 3) Get access token:<br>
     a)<br>
     ``$ curl -X POST "https://id.twitch.tv/oauth2/token?client_id=CID&client_secret=SECRET&grant_type=client_credentials&scope=clips:edit"``<br>
-    ``$ {"access_token":"b8zb83g1y02eryihb4zrggjycac15s","expires_in":5616898,"scope":["clips:edit"],"token_type":"bearer"}``<br>
+    ``$ {"access_token":"TOKEN","expires_in":5616898,"scope":["clips:edit"],"token_type":"bearer"}``<br>
 __OR__<br>
     b)<br>
     ``$ curl -X POST "https://id.twitch.tv/oauth2/token?client_id=CID&client_secret=SECRET&code=CODE&grant_type=authorization_code&redirect_uri=http://localhost&scope=clips:edit"``<br>
-    ``$ {"access_token":"w7ib0e0m3o04nvsdydcmhp2nohkntn","expires_in":13559,"refresh_token":"b7hzdbrk5xc7laaykgs62yov0ljcf13yz4v1bi21hr3p64qcu0","scope":["clips:edit"],"token_type":"bearer"}``
+    ``$ {"access_token":"TOKEN","expires_in":13559,"refresh_token":"R_TOK","scope":["clips:edit"],"token_type":"bearer"}``<br>
 
 4) Fill in information in ``cliploader.py``. Replace ``os.environ`["VALUE"]`` with your string. [Lines 12, 13]
 
@@ -47,4 +47,6 @@ __OR__<br>
 
 ### Notes:
 1) On the initial upload, there will be a Google authentication page that will ask for your Youtube login information. Fill it in the first time and you will authenticate the bot for future uploads.
-2) If you need to refresh your Twitch access token to download clips, follow the Twitch installation above with option __b.__ for step 3.
+2) If the bot needs to refresh the Twitch access token to download clips, follow the Twitch installation above with option __b__ for step 3. R_TOK will hold the refresh token.
+   1) Make a POST request with the refresh token.<br>
+   ``$ curl -X POST "https://id.twitch.tv/oauth2/token?client_id=CID&client_secret=SECRET&&refresh_token=R_TOK&grant_type=refresh_token"``
