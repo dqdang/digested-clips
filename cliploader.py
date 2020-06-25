@@ -1,17 +1,21 @@
+import os
 import re
-import urllib
 import requests
 import sys
+import urllib.request
 
 basepath = './'
 base_clip_path = 'https://clips-media-assets2.twitch.tv/'
 
 
 def retrieve_mp4_data(slug):
-    cid = "4sm4vmz8jx9csq7d96jd0oztw0bzh6"
+    # cid = os.environ['T_CID']
+    # token = os.environ['T_TOKEN]
+    cid = "2zmv5t5h57yad8ppyg3yeldctlp51c"
+    token = "b8zb83g1y02eryihb4zrggjycac15s"
     clip_info = requests.get(
         "https://api.twitch.tv/helix/clips?id=" + slug,
-        headers={"Client-ID": cid}).json()
+        headers={"Client-ID": cid, "Authorization": "Bearer {}".format(token)}).json()
     thumb_url = clip_info['data'][0]['thumbnail_url']
     title = clip_info['data'][0]['title']
     slice_point = thumb_url.index("-preview-")
@@ -39,7 +43,15 @@ def dl_clip(clip):
     print(mp4_url)
     # with open(output_path, 'wb') as f:
     #     f.write(requests.get(mp4_url).content)
-    urllib.urlretrieve(mp4_url, output_path, reporthook=dl_progress)
+    urllib.request.urlretrieve(mp4_url, output_path, reporthook=dl_progress)
 
     # print('\nDone.')
     return clip_title, output_path
+
+def main():
+    clip_title, output_path = dl_clip(sys.argv[1])
+    print(clip_title)
+    print(output_path)
+
+if __name__ == "__main__":
+    main()

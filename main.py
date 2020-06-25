@@ -1,15 +1,18 @@
-#!/usr/bin/python
-import praw
-import pdb
-import re
-import os
 import argparse
-from twitch_download import cliploader
-from youtube_upload import uploader
+import cliploader
+import os
+import pdb
+import praw
+import re
+import shutil
+import uploader
 
-USERNAME = os.environ['USERNAME']
-PASSWORD = os.environ['PASSWORD']
-SUBREDDIT = os.environ['SUBREDDIT']
+# USERNAME = os.environ['USERNAME']
+# PASSWORD = os.environ['PASSWORD']
+# SUBREDDIT = os.environ['SUBREDDIT']
+USERNAME = "digested-bot"
+PASSWORD = "leagueoflegends"
+SUBREDDIT = "derek_bot"
 
 if __name__ == '__main__':
 
@@ -21,10 +24,10 @@ if __name__ == '__main__':
     write_to = "posts_replied_to.txt"
 
     # Create the Reddit instance
-    reddit = praw.Reddit('bot1')
+    reddit = praw.Reddit(client_id="r_PeCakRaugOjQ", client_secret="P7KMnFPyeUBWB3fM1MpNfKXXPTo", password=PASSWORD, user_agent="USERAGENT", username=USERNAME)
 
-    # and login
-    reddit.login(USERNAME, PASSWORD)
+    # # and login
+    # reddit.login(USERNAME, PASSWORD)
 
     # Have we run this code before? If not, create an empty list
     if not os.path.isfile(write_to):
@@ -63,7 +66,9 @@ if __name__ == '__main__':
                 print(index)
                 clip = cliploader.dl_clip(index)
                 print("\n")
-                youtube_mirror = uploader.upload(["-t"+clip[0], clip[1]])
+                shutil.move("uploader.py-oauth2.json", "main.py-oauth2.json")
+                youtube_mirror = uploader.upload(
+                    {"title": clip[0], "file": clip[1]})
                 # Reply to the post
                 submit = False
                 while(not submit):
