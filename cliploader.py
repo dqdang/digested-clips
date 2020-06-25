@@ -47,10 +47,12 @@ def dl_clip(clip):
     # print('\nDone.')
     return clip_title, output_path
 
+
 def main():
     clip_title, output_path = dl_clip(sys.argv[1])
     print(clip_title)
     print(output_path)
+
 
 if __name__ == "__main__":
     main()

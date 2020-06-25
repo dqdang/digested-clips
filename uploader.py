@@ -144,7 +144,8 @@ def initialize_upload(youtube, options):
             # practice, but if you're using Python older than 2.6 or if you're
             # running on App Engine, you should set the chunksize to something like
             # 1024 * 1024 (1 megabyte).
-            media_body=MediaFileUpload(options.file, chunksize=-1, resumable=True)
+            media_body=MediaFileUpload(
+                options.file, chunksize=-1, resumable=True)
         )
     except:
         insert_request = youtube.videos().insert(
@@ -161,7 +162,8 @@ def initialize_upload(youtube, options):
             # practice, but if you're using Python older than 2.6 or if you're
             # running on App Engine, you should set the chunksize to something like
             # 1024 * 1024 (1 megabyte).
-            media_body=MediaFileUpload(options["file"], chunksize=-1, resumable=True)
+            media_body=MediaFileUpload(
+                options["file"], chunksize=-1, resumable=True)
         )
 
     resumable_upload(insert_request)

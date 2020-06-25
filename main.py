@@ -23,7 +23,8 @@ if __name__ == '__main__':
     write_to = "posts_replied_to.txt"
 
     # Create the Reddit instance
-    reddit = praw.Reddit(client_id=R_CID, client_secret=R_SECRET, password=R_PASSWORD, user_agent="USERAGENT", username=R_USERNAME)
+    reddit = praw.Reddit(client_id=R_CID, client_secret=R_SECRET,
+                         password=R_PASSWORD, user_agent="USERAGENT", username=R_USERNAME)
 
     # # and login
     # reddit.login(USERNAME, PASSWORD)
