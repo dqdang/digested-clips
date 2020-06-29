@@ -10,7 +10,7 @@ import uploader
 R_USERNAME = os.environ['USERNAME']
 R_PASSWORD = os.environ['PASSWORD']
 R_CID = os.environ['R_CID']
-R_SECRET = os.environ['C_SECRET']
+R_SECRET = os.environ['R_SECRET']
 SUBREDDIT = os.environ['SUBREDDIT']
 
 if __name__ == '__main__':
