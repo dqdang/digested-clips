@@ -66,7 +66,9 @@ if __name__ == '__main__':
                 print(index)
                 clip = cliploader.dl_clip(index)
                 print("\n")
-                shutil.move("uploader.py-oauth2.json", "main.py-oauth2.json")
+                if os.path.exists("uploader.py-oauth2.json"):
+                    shutil.move("uploader.py-oauth2.json", "main.py-oauth2.json")
+
                 youtube_mirror = uploader.upload(
                     {"title": clip[0], "file": clip[1]})
                 # Reply to the post
