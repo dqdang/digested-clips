@@ -15,7 +15,7 @@ Host this on a local server. Get one from Google Cloud, AWS, DigitalOcean, etc.
 1) Go to https://ssl.reddit.com/prefs/apps/
 2) Make app, personal use.
 3) Copy praw.ini from pip install location to this file's folder. Use ``pip show praw`` to find the location.
-4) Fill in information in ``main.py``. Replace ``os.environ["VALUE"]`` with your string. [Lines 10, 11, 12, 13, 14]
+4) Fill in information in ``main.py``. Replace ``os.environ["VALUE"]`` with your string; e.g ``R_USERNAME = "digested-clips"`` [Lines 10, 11, 12, 13, 14]
 
 ### Twitch:
 1) Make Twitch account with cid. Create application -> Enable 2-factor authentication.
@@ -32,7 +32,7 @@ __OR__<br>
     ``$ curl -X POST "https://id.twitch.tv/oauth2/token?client_id=CID&client_secret=SECRET&code=CODE&grant_type=authorization_code&redirect_uri=http://localhost&scope=clips:edit"``<br>
     ``$ {"access_token":"TOKEN","expires_in":13559,"refresh_token":"R_TOK","scope":["clips:edit"],"token_type":"bearer"}``<br>
 
-4) Fill in information in ``cliploader.py``. Replace ``os.environ`["VALUE"]`` with your string. [Lines 12, 13]
+4) Fill in information in ``cliploader.py``. Replace ``os.environ`["VALUE"]`` with your string; e.g ``T_CID = "daj2kgh23nxlr0h83k6uifd9"`` [Lines 12, 13]
 
 ### Youtube:
 1) Make a Google account and create an application here: https://console.developers.google.com/
@@ -50,3 +50,4 @@ __OR__<br>
 2) If the bot needs to refresh the Twitch access token to download clips, follow the Twitch installation above with option __b__ for step 3. R_TOK will hold the refresh token.
    1) Make a POST request with the refresh token.<br>
    ``$ curl -X POST "https://id.twitch.tv/oauth2/token?client_id=CID&client_secret=SECRET&&refresh_token=R_TOK&grant_type=refresh_token"``
+   2) You will need to replace the T_TOK in cliploader.py.
