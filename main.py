@@ -70,23 +70,38 @@ if __name__ == '__main__':
                     clip = cliploader.dl_clip(index)
                     print("\n")
                     if os.path.exists("uploader.py-oauth2.json"):
-                        shutil.move("uploader.py-oauth2.json",
+                        shutil.copy2("uploader.py-oauth2.json",
                                     "main.py-oauth2.json")
 
                     cmd = shlex.split("python uploader.py --file {} -t {}".format(
                         clip[1], clip[0]))
-                    out = subprocess.Popen(cmd,
-                                           stdout=subprocess.PIPE,
-                                           stderr=subprocess.STDOUT)
-                    stdout, stderr = out.communicate()
-                    stdout = str(stdout)
-                    print(stdout)
+                    stdout = ""
+                    try:
+                        out = subprocess.Popen(cmd,
+                                               stdout=subprocess.PIPE,
+                                               stderr=subprocess.STDOUT)
+
+                        stdout, stderr = out.communicate()
+                        stdout = str(stdout)
+                        print(stdout)
+                    except:
+                        cmd = shlex.split("python3 uploader.py --file {} -t {}".format(
+                        clip[1], clip[0]))
+                        out = subprocess.Popen(cmd,
+                                               stdout=subprocess.PIPE,
+                                               stderr=subprocess.STDOUT)
+                        stdout, stderr = out.communicate()
+                        stdout = str(stdout)
+                        print(stdout)
                     if "successfully uploaded" in stdout:
                         mir_index1 = stdout.find(
                             "https://www.youtube.com/watch?v=")
                         # 32 = https://www.youtube.com/watch?v= ---- 11 = id
                         mir_index2 = mir_index1 + 32 + 11
                         youtube_mirror = stdout[mir_index1:mir_index2]
+                    else:
+                        print(stdout)
+                        print("Upload failed!")
                     # Reply to the post
                     submit = False
                     while(not submit):

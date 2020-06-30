@@ -107,7 +107,7 @@ def initialize_upload(youtube, options):
         body = dict(
             snippet=dict(
                 title=options.title,
-                description=options.description,
+                description="Digested by this bot",
                 tags=tags,
                 categoryId=options.category
             ),
