@@ -9,8 +9,8 @@ base_clip_path = 'https://clips-media-assets2.twitch.tv/'
 
 
 def retrieve_mp4_data(slug):
-    T_CID = os.environ['T_CID']
-    T_TOKEN = os.environ['T_TOKEN']
+    T_CID = os.environ["T_CID"]
+    T_TOKEN = os.environ["T_TOKEN"]
 
     clip_info = requests.get(
         "https://api.twitch.tv/helix/clips?id=" + slug,

@@ -166,7 +166,7 @@ def initialize_upload(youtube, options):
                 options["file"], chunksize=-1, resumable=True)
         )
 
-    resumable_upload(insert_request)
+    return resumable_upload(insert_request)
 
 # This method implements an exponential backoff strategy to resume a
 # failed upload.
@@ -211,7 +211,7 @@ def resumable_upload(insert_request):
 def upload(args):
     youtube = get_authenticated_service(args)
     try:
-        initialize_upload(youtube, args)
+        youtube_mirror = initialize_upload(youtube, args)
     except HttpError as e:
         print("An HTTP error %d occurred:\n%s" % (e.resp.status, e.content))
 
@@ -242,6 +242,6 @@ if __name__ == '__main__':
 
     youtube = get_authenticated_service(args)
     try:
-        initialize_upload(youtube, args)
+        youtube_mirror = initialize_upload(youtube, args)
     except HttpError as e:
         print("An HTTP error %d occurred:\n%s" % (e.resp.status, e.content))
