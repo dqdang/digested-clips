@@ -36,10 +36,15 @@ __OR__<br>
 
 ### Youtube:
 1) Make a Google account and create an application here: https://console.developers.google.com/
-2) Enable Youtube Data API, create credentials.
-3) Create credentials for oauth2
+2) Create client_secrets for Google's oauth2 security flow.
    1) Copy the web template from https://github.com/googleapis/google-api-python-client/blob/master/docs/client-secrets.md to create a ``client_secrets.json`` file and paste in given information from oauth2.
    2) Put the ``client_secrets.json`` file in the same directory as this README.md file.
+3) **Click the dropdown button** on https://console.developers.google.com/ on the left of the page next to GoogleAPIs. There you can **create a new project**.
+4) After creating the new project, make sure to **select** it in **the dropdown box** again and there should be a button that says "ENABLE APIs AND SERVICES". Click it and enter in the search box "youtube data". Select the one that says **YouTube Data API V3** and click **Enable**. Wait a bit for it to enable. This will allow your application to use the YouTube Data API.
+5) Click **GoogleAPIs** to go back to the home application screen and click **Credentials**. Select **Create OAuth client ID**.
+6) Google may ask you to set a product name. Just click the configure button and click "External" (Can't select "Internal" unless you're a G Suite user).  Give the bot a name and click save at the bottom. Click **Credentials ** and select **Create OAuth client ID** again.
+7) Select **Web application** and choose a name (this can be anything).
+8) Afterwards, a popup window will show the application's client ID and secret. Use these values in your ``client_secrets.json`` file.
 
 ### Run:
 - If all goes well, just run the main file:<br>
