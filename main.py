@@ -71,7 +71,7 @@ if __name__ == '__main__':
                     print("\n")
                     if os.path.exists("uploader.py-oauth2.json"):
                         shutil.copy2("uploader.py-oauth2.json",
-                                    "main.py-oauth2.json")
+                                     "main.py-oauth2.json")
 
                     cmd = shlex.split("python uploader.py --file {} -t {}".format(
                         clip[1], clip[0]))
@@ -86,7 +86,7 @@ if __name__ == '__main__':
                         print(stdout)
                     except:
                         cmd = shlex.split("python3 uploader.py --file {} -t {}".format(
-                        clip[1], clip[0]))
+                            clip[1], clip[0]))
                         out = subprocess.Popen(cmd,
                                                stdout=subprocess.PIPE,
                                                stderr=subprocess.STDOUT)
