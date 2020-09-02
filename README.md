@@ -1,5 +1,5 @@
 # digested-clips
-Twitch clips are more unreliable than the printer at work
+Reddit posts -> Twitch clips -> YouTube mirror
 
 Host this on a local server. Get one from Google Cloud, AWS, DigitalOcean, etc.
 
