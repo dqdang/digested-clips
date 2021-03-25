@@ -6,7 +6,7 @@ Host this on a local server. Get one from Google Cloud, AWS, DigitalOcean, etc.
 ## Instructions:
 
 ### Python:
-1) Install the latest Python 3 from https://www.python.org/downloads/
+1) Install Python 3 from https://www.python.org/downloads/.
 2) Install pip if your installation didn't come with it from here: https://pip.pypa.io/en/stable/installing/
 3) Install requirements:<br>
 ``$ pip install -r requirements.txt``
