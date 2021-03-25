@@ -24,11 +24,7 @@ Host this on a local server. Get one from Google Cloud, AWS, DigitalOcean, etc.
     ``https://id.twitch.tv/oauth2/authorize?client_id=CID&redirect_uri=http://localhost&scope=clips:edit&response_type=code``
 
 3) Get access token:<br>
-    a)<br>
-    ``$ curl -X POST "https://id.twitch.tv/oauth2/token?client_id=CID&client_secret=SECRET&grant_type=client_credentials&scope=clips:edit"``<br>
-    ``$ {"access_token":"TOKEN","expires_in":5616898,"scope":["clips:edit"],"token_type":"bearer"}``<br>
-__OR__<br>
-    b)<br>
+
     ``$ curl -X POST "https://id.twitch.tv/oauth2/token?client_id=CID&client_secret=SECRET&code=CODE&grant_type=authorization_code&redirect_uri=http://localhost&scope=clips:edit"``<br>
     ``$ {"access_token":"TOKEN","expires_in":13559,"refresh_token":"R_TOK","scope":["clips:edit"],"token_type":"bearer"}``<br>
 
