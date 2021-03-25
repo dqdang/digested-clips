@@ -18,7 +18,7 @@ Host this on a local server. Get one from Google Cloud, AWS, DigitalOcean, etc.
 4) Fill in information in ``main.py``. Replace ``os.environ["VALUE"]`` with your string; e.g ``R_USERNAME = "digested-clips"`` [Lines 10, 11, 12, 13, 14]
 
 ### Twitch:
-1) Make Twitch account with cid. Create application -> Enable 2-factor authentication.
+1) Make Twitch account with client ID. You can find your client ID here: https://dev.twitch.tv/docs/v5. Enable 2-factor authentication as well.
 2) Get authorization code:
 
     ``https://id.twitch.tv/oauth2/authorize?client_id=CID&redirect_uri=http://localhost&scope=clips:edit&response_type=code``
