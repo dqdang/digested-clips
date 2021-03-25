@@ -15,7 +15,7 @@ Host this on a local server. Get one from Google Cloud, AWS, DigitalOcean, etc.
 1) Go to https://ssl.reddit.com/prefs/apps/
 2) Make app, personal use.
 3) Copy praw.ini from pip install location to this file's folder. Use ``pip show praw`` to find the location.
-4) Fill in information in ``main.py``. Replace ``os.environ["VALUE"]`` with your string; e.g ``R_USERNAME = "digested-clips"`` [Lines 10, 11, 12, 13, 14]
+4) Fill in information in ``main.py``. Replace ``os.environ["VALUE"]`` with your string; e.g ``R_USERNAME = "digested-clips"`` and ``SUBREDDIT = "valorant"`` [Lines 12, 13, 14, 15, 16]
 
 ### Twitch:
 1) Make Twitch account with client ID. You can find your client ID here: https://dev.twitch.tv/docs/v5. Enable 2-factor authentication as well.
