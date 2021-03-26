@@ -1,6 +1,9 @@
 # digested-clips
 Reddit posts -> Twitch clips -> YouTube mirror
 
+**NOTE: This project no longer works. Google's new guidelines as of 2021 have disabled public video uploading by bots:**<br>
+https://support.google.com/youtube/answer/7300965?hl=en
+
 Host this on a local server. Get one from Google Cloud, AWS, DigitalOcean, etc.
 
 ## Instructions:
