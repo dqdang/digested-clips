@@ -73,8 +73,9 @@ if __name__ == '__main__':
                         shutil.copy2("uploader.py-oauth2.json",
                                      "main.py-oauth2.json")
 
-                    cmd = shlex.split(
+                    cmd = shlex.quote(
                         "python uploader.py --file {} -t {}".format(clip[1], clip[0]))
+                    cmd = shlex.split(cmd)
                     stdout = ""
                     try:
                         out = subprocess.Popen(cmd,
@@ -85,14 +86,15 @@ if __name__ == '__main__':
                         stdout = str(stdout)
                         print(stdout)
                     except:
-                        cmd = shlex.split(
-                            "python3 uploader.py --file {} -t {}".format(clip[1], clip[0]))
-                        out = subprocess.Popen(cmd,
-                                               stdout=subprocess.PIPE,
-                                               stderr=subprocess.STDOUT)
-                        stdout, stderr = out.communicate()
-                        stdout = str(stdout)
-                        print(stdout)
+                        cmd = shlex.quote(
+                            "python uploader.py --file {} -t {}".format(clip[1], clip[0]))
+                        cmd = shlex.split(cmd)
+                    out = subprocess.Popen(cmd,
+                                           stdout=subprocess.PIPE,
+                                           stderr=subprocess.STDOUT)
+                    stdout, stderr = out.communicate()
+                    stdout = str(stdout)
+                    print(stdout)
                     if "successfully uploaded" in stdout:
                         mir_index1 = stdout.find(
                             "https://www.youtube.com/watch?v=")
