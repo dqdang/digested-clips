@@ -72,10 +72,12 @@ if __name__ == '__main__':
                     if os.path.exists("uploader.py-oauth2.json"):
                         shutil.copy2("uploader.py-oauth2.json",
                                      "main.py-oauth2.json")
-
-                    cmd = shlex.quote(
-                        "python uploader.py --file {} -t {}".format(clip[1], clip[0]))
-                    cmd = shlex.split(cmd)
+                    clip_title = re.sub(r'\W+', '', clip[0])
+                    uploader_path = os.path.join(os.path.dirname(
+                        os.path.abspath(__file__)), "uploader.py")
+                    cmd = "python {} --file {} -t {}".format(
+                        uploader_path, clip[1], clip_title)
+                    cmd = cmd.split(" ")
                     stdout = ""
                     try:
                         out = subprocess.Popen(cmd,
@@ -87,14 +89,14 @@ if __name__ == '__main__':
                         print(stdout)
                     except:
                         cmd = shlex.quote(
-                            "python uploader.py --file {} -t {}".format(clip[1], clip[0]))
+                            "python3 uploader.py --file {} -t {}".format(uploader_path, clip[1], clip_title))
                         cmd = shlex.split(cmd)
-                    out = subprocess.Popen(cmd,
-                                           stdout=subprocess.PIPE,
-                                           stderr=subprocess.STDOUT)
-                    stdout, stderr = out.communicate()
-                    stdout = str(stdout)
-                    print(stdout)
+                        out = subprocess.Popen(cmd,
+                                               stdout=subprocess.PIPE,
+                                               stderr=subprocess.STDOUT)
+                        stdout, stderr = out.communicate()
+                        stdout = str(stdout)
+                        print(stdout)
                     if "successfully uploaded" in stdout:
                         mir_index1 = stdout.find(
                             "https://www.youtube.com/watch?v=")
